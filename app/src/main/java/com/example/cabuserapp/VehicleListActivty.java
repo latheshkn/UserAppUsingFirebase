@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,12 +63,26 @@ public class VehicleListActivty extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull View_Recycler_Adapter view_recycler_adapter, int i, @NonNull Modelclass modelclass) {
+                final String Key=getRef(i).getKey();
                 view_recycler_adapter.txtviewcarname.setText(String.valueOf(modelclass.getName()));
                 view_recycler_adapter.txtviewcarmodel.setText(String.valueOf(modelclass.getModel()));
 
 
                 Picasso.with(VehicleListActivty.this).load(modelclass.getImage()).into(view_recycler_adapter.Carviewimages);
 
+                
+                view_recycler_adapter.mview.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent=new Intent(VehicleListActivty.this,DetailActivity.class);
+                        Bundle bundle=new Bundle();
+                        bundle.putString("key",Key);
+                        intent.putExtras(bundle);
+
+                        startActivity(intent);
+
+                    }
+                });
 
             }
 

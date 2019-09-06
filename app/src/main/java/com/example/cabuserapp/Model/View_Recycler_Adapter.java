@@ -12,7 +12,7 @@ import com.example.cabuserapp.R;
 
 public class View_Recycler_Adapter extends RecyclerView.ViewHolder {
 
-
+      public View mview;
     public TextView txtviewcarname, txtviewcarmodel;
     public ImageView Carviewimages;
    public  Toolbar toolcarviewpage;
@@ -26,6 +26,6 @@ public class View_Recycler_Adapter extends RecyclerView.ViewHolder {
         Carviewimages=itemView.findViewById(R.id.Carviewimages);
         toolcarviewpage=itemView.findViewById(R.id.toolcarviewpage);
 
-
+        mview=itemView;
     }
 }

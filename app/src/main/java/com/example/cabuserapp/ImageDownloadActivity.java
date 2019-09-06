@@ -23,7 +23,7 @@ public class ImageDownloadActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private ImageAdapter mAdapter;
-
+    public String key;
     private ProgressBar mProgressCircle;
 
     private DatabaseReference mDatabaseRef;
@@ -56,7 +56,10 @@ public class ImageDownloadActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Upload upload = postSnapshot.getValue(Upload.class);
+                     key=dataSnapshot.getKey();
                     mUploads.add(upload);
+
+
                 }
 
                 mAdapter = new ImageAdapter(ImageDownloadActivity.this, mUploads);

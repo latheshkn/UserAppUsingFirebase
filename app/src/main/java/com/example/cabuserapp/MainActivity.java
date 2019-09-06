@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         linearoffers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,ImageDownloadActivity.class);
+                Intent intent=new Intent(MainActivity.this,BookingActivity.class);
                 startActivity(intent);
             }
         });

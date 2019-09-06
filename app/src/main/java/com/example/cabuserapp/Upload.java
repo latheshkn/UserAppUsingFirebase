@@ -2,16 +2,18 @@ package com.example.cabuserapp;
 
 public class Upload {
 
-        private String Name;
-        private String Image;
 
-        public Upload() {
-            //empty constructor needed
-        }
+    private String Name;
+    private String Image;
 
-    public Upload(String name, String image) {
+    public Upload() {
+        //empty constructor needed
+    }
+
+    public Upload( String name, String image) {
+
         Name = name;
-        this.Image = image;
+        Image = image;
     }
 
     public String getName() {
@@ -27,8 +29,7 @@ public class Upload {
     }
 
     public void setImage(String image) {
-        this.Image = image;
+        Image = image;
     }
 }
-
 

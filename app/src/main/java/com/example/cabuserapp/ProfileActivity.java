@@ -1,5 +1,6 @@
 package com.example.cabuserapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -12,14 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cabuserapp.Model.UserDatails;
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +41,12 @@ public class ProfileActivity extends AppCompatActivity {
         toolprofile=findViewById(R.id.toolprofile);
         toolprofile.setTitle("Profile");
         setSupportActionBar(toolprofile);
+        tvName=findViewById(R.id.namedisplay);
+        Emaildisplay=findViewById(R.id.Emaildisplay);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mref=new Firebase("https://adminapp-c9ff1.firebaseio.com/User/mVwLQy9LouhPjUBtOLO4cwurbhG2/Name");
+           databaseReference=FirebaseDatabase.getInstance().getReference().child("Admin");
 //
 
         btnedt.setOnClickListener(new View.OnClickListener() {
@@ -59,33 +63,18 @@ public class ProfileActivity extends AppCompatActivity {
 
         showname();
 
-//        mref.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                String value=dataSnapshot.);
-//                Emaildisplay.setText(value);
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(FirebaseError firebaseError) {
-//
-//            }
-//        });
 
     }
 
     public  void showname(){
 
-        SharedPreferences sharedPreferences =getSharedPreferences("MY_PREF",ProfileActivity.MODE_PRIVATE);
+        SharedPreferences sharedPreferences =getSharedPreferences("MY_PREF",MODE_PRIVATE);
 
         String NA =sharedPreferences.getString("NAME","name");
 
         String EM=sharedPreferences.getString("Email","email");
 
-        tvName=findViewById(R.id.namedisplay);
-        Emaildisplay=findViewById(R.id.Emaildisplay);
+
 
         tvName.setText(NA);
 
